@@ -9,7 +9,9 @@ var FormView = {
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
     event.preventDefault();
-
+    debugger;
+    Messages.addMessage(App.username, $('#message')[0].value, Rooms.room);
+    Parse.create(Messages.getMostRecentLocalMessage());
     console.log('click!');
   },
 
@@ -18,10 +20,5 @@ var FormView = {
 
     FormView.$form.find('input[type=submit]').attr('disabled', status);
   },
-
-  createMessage: function() {
-    var msg = new Message(App.name, $('#message').value, Room.room);
-    Messages.addUserInputtedMsg(msg);
-  }
 
 };

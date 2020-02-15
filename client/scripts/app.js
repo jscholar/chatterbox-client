@@ -5,6 +5,7 @@ var App = {
   username: 'anonymous',
 
   initialize: function() {
+    App.startSpinner();
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
@@ -12,19 +13,18 @@ var App = {
     MessagesView.initialize();
 
     // Fetch initial batch of messages
-    App.startSpinner();
-    App.fetch(App.stopSpinner);
+    App.stopSpinner();
 
   },
 
   fetch: function(callback = ()=>{}) {
-    Parse.readAll((data) => {
-      // examine the response from the server request:
-      console.log(data);
-      Messages['messageChunk'] = data['results'];
-      callback();
-      MessagesView.initialize();
-    });
+    // Parse.readAll((data) => {
+    //   // examine the response from the server request:
+    //   console.log(data);
+    //   Messages['messageChunk'] = data['results'];
+    //   callback();
+    //   MessagesView.initialize();
+    // });
   },
 
   startSpinner: function() {
