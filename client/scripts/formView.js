@@ -21,6 +21,7 @@ var FormView = {
 
   createMessage: function() {
     var msg = new Message(App.name, $('#message').value, Room.room);
+    Messages.addUserInputtedMsg(msg);
   }
 
 };
